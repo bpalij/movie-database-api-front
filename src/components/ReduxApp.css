@@ -1,0 +1,9 @@
+.not-footer-full-height{
+  min-height: calc(100vh - 35px);
+}
+footer{
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  color: white; 
+}
