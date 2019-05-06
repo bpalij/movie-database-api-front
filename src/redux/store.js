@@ -107,8 +107,9 @@ function result(state = {}, action) {
 const defaultPaginator = {
   currentPage: null,
   maxPage: null,
-  get isFirst() { return (this.currentPage === 1 || !(this.currentPage)); },
-  get isLast() { return (this.currentPage === this.maxPage || !(this.currentPage)); },
+  get isFirst() { return !!(this.currentPage === 1 || !(this.currentPage)); },
+  // !! - ensure to return bool
+  get isLast() { return !!(this.currentPage === this.maxPage || !(this.currentPage)); },
 };
 
 function paginator(state = defaultPaginator, action) {
