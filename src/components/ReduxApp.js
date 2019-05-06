@@ -19,7 +19,12 @@ class ReduxApp extends Component {
     const { getConf, errConf } = this.props;
     fetch(`https://api.themoviedb.org/3/configuration?api_key=${process.env.REACT_APP_MOVIE_API_KEY}`,
       { headers: { Accept: 'application/json' } })
-      .then(res => res.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw (new Error(`Response not OK! Response status: ${res.status}: ${res.statusText}`));
+      })
       .then(data => getConf(data))
       .catch(() => errConf());
   }
@@ -55,16 +60,16 @@ class ReduxApp extends Component {
 
 ReduxApp.propTypes = {
   showHide: PropTypes.shape({
-    loadForm: PropTypes.bool,
-    showForm: PropTypes.bool,
-    errorForm: PropTypes.bool,
-    disableForm: PropTypes.bool,
-    specifySearch: PropTypes.bool,
-    loadResult: PropTypes.bool,
-    showResult: PropTypes.bool,
-    errorResult: PropTypes.bool,
-    showPagination: PropTypes.bool,
-    disablePagination: PropTypes.bool,
+    loadForm: PropTypes.bool.isRequired,
+    showForm: PropTypes.bool.isRequired,
+    errorForm: PropTypes.bool.isRequired,
+    disableForm: PropTypes.bool.isRequired,
+    specifySearch: PropTypes.bool.isRequired,
+    loadResult: PropTypes.bool.isRequired,
+    showResult: PropTypes.bool.isRequired,
+    errorResult: PropTypes.bool.isRequired,
+    showPagination: PropTypes.bool.isRequired,
+    disablePagination: PropTypes.bool.isRequired,
   }).isRequired,
   getConf: PropTypes.func.isRequired,
   errConf: PropTypes.func.isRequired,
