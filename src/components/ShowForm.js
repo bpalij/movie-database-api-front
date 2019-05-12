@@ -75,23 +75,23 @@ class ShowForm extends Component {
   search() {
     const { startQuery, loadedQuery, errQuery } = this.props;
     const requestParams = createParamsFromState({ ...this.state });
-    console.log(requestParams);
+    // console.log(requestParams);
     startQuery();
     fetch(createLinkForGet('https://api.themoviedb.org/3/discover/movie', requestParams),
       { headers: { Accept: 'application/json' } })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.ok) {
           return res.json();
         }
         throw (new Error(`Response not OK! Response status: ${res.status}: ${res.statusText}`));
       })
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         loadedQuery({ result, requestParams });
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((/* e */) => {
+        // console.log(e);
         errQuery();
       });
   }

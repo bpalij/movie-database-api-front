@@ -6,7 +6,7 @@ import {
 // import createParamsFromState from '../misc/createParamsFromState';
 
 export function getConf(data) {
-  console.log(data);
+  /* console.log(data); */
   return {
     type: LOAD_CONF_SUCCESS,
     data,

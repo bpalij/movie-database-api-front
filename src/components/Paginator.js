@@ -65,24 +65,24 @@ class Paginator extends Component {
     };
     const requestParams = getParams();
     requestParams.page = page;
-    console.log(requestParams);
+    // console.log(requestParams);
     startPage();
     fetch(createLinkForGet('https://api.themoviedb.org/3/discover/movie', requestParams),
       { headers: { Accept: 'application/json' } })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.ok) {
           return res.json();
         }
         throw (new Error(`Response not OK! Response status: ${res.status}: ${res.statusText}`));
       })
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         loadedPage({ result, requestParams });
         this.setState({ disablePaginator: false });
       })
-      .catch((e) => {
-        console.log(e);
+      .catch((/* e */) => {
+        // console.log(e);
         errPage();
       });
   }
