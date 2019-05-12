@@ -14,7 +14,8 @@ import SpecifySearch from './SpecifySearch';
 import LoadResult from './LoadResult';
 import ErrorResult from './ErrorResult';
 import Paginator from './Paginator';
-import store from '../redux/store';
+import ShowParams from './ShowParams';
+// import store from '../redux/store';
 
 // const yearsOptions = initYearArray(1850);
 
@@ -46,7 +47,7 @@ class ReduxApp extends Component {
       startPage,
       loadedPage,
       errPage,
-      // result,
+      result,
     } = this.props;
     return (
       <div>
@@ -66,7 +67,7 @@ class ReduxApp extends Component {
               )}
               {showHide.errorForm && <ErrorForm />}
             </header>
-            {showHide.showParams && (<div>Params placeholder</div>)}
+            {showHide.showParams && <ShowParams result={result} requestParams={requestParams} />}
             <main>
               {showHide.specifySearch && <SpecifySearch />}
               {showHide.loadResult && <LoadResult />}
@@ -114,7 +115,7 @@ ReduxApp.propTypes = {
     currentPage: PropTypes.number,
     maxPage: PropTypes.number,
   }).isRequired,
-  // result: PropTypes.instanceOf(Object).isRequired,
+  result: PropTypes.instanceOf(Object).isRequired,
   requestParams: PropTypes.instanceOf(Object).isRequired,
   getConf: PropTypes.func.isRequired,
   errConf: PropTypes.func.isRequired,
@@ -131,7 +132,7 @@ const mapStateToProps = state => ({
   conf: state.conf,
   requestParams: state.requestParams,
   paginator: state.paginator,
-  result: store.result,
+  result: state.result,
 });
 
 const mapDispatchToProps = (dispatch) => {
