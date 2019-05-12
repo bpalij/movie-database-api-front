@@ -1,0 +1,9 @@
+#paginator{
+  margin: 10px auto;
+  display: inline-block;
+}
+
+.outside-paginator{
+  width: 100%;
+  text-align: center;
+}

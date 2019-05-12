@@ -1,0 +1,16 @@
+#main-form{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  padding-bottom: 5px;
+}
+#main-form div.row label {
+  width: 100%;
+}
+.btn-full-width{
+  width: 100%;
+}
+
+.height-hack{
+  height:13px;
+}

@@ -1,7 +1,10 @@
 .not-footer-full-height{
   min-height: calc(100vh - 35px);
+  margin-top: -1px;
+  padding-top: 1px;
+  /* Hack to avoid collapsing margin */
 }
-footer{
+#footer{
   height: 35px;
   text-align: center;
   line-height: 35px;
