@@ -10,8 +10,8 @@ sortOptions.forEach((x) => {
 
 function ShowParams(props) {
   const { requestParams, result } = props;
+  // console.log(requestParams);
   // making such a retarded markup to avoid es-lint errors
-  console.log(requestParams);
   return (
     <div className="text-muted">
       {/* <strong>Your search: </strong> */}
