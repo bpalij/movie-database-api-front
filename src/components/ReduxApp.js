@@ -12,6 +12,7 @@ import ShowForm from './ShowForm';
 import ErrorForm from './ErrorForm';
 import SpecifySearch from './SpecifySearch';
 import LoadResult from './LoadResult';
+import ShowResults from './ShowResults';
 import ErrorResult from './ErrorResult';
 import Paginator from './Paginator';
 import ShowParams from './ShowParams';
@@ -58,7 +59,7 @@ class ReduxApp extends Component {
               {showHide.showForm && (
                 <ShowForm
                   disabled={showHide.disableForm}
-                  conf={conf}
+                  // conf={conf}
                   startQuery={startQuery}
                   // requestParams={requestParams}
                   loadedQuery={loadedQuery}
@@ -67,11 +68,24 @@ class ReduxApp extends Component {
               )}
               {showHide.errorForm && <ErrorForm />}
             </header>
-            {showHide.showParams && <ShowParams result={result} requestParams={requestParams} />}
             <main>
               {showHide.specifySearch && <SpecifySearch />}
+              {showHide.showParams
+              && (
+              <ShowParams
+                result={result}
+                requestParams={requestParams}
+                mute={showHide.muteResult}
+              />
+              )}
               {showHide.loadResult && <LoadResult />}
-              {showHide.showResult && (<div>Result placeholder</div>)}
+              {showHide.showResult && (
+                <ShowResults
+                  results={result.results}
+                  conf={conf}
+                  mute={showHide.muteResult}
+                />
+              )}
               {showHide.errorResult && <ErrorResult />}
             </main>
             <nav>
@@ -106,6 +120,7 @@ ReduxApp.propTypes = {
     specifySearch: PropTypes.bool.isRequired,
     loadResult: PropTypes.bool.isRequired,
     showResult: PropTypes.bool.isRequired,
+    muteResult: PropTypes.bool.isRequired,
     errorResult: PropTypes.bool.isRequired,
     showPagination: PropTypes.bool.isRequired,
     // disablePagination: PropTypes.bool.isRequired,
@@ -136,6 +151,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = (dispatch) => {
+  // destructing here instead of import to avoid es-lint error
   const {
     getConf,
     errConf,

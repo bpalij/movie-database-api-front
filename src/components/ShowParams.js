@@ -9,23 +9,23 @@ sortOptions.forEach((x) => {
 });
 
 function ShowParams(props) {
-  const { requestParams, result } = props;
+  const { requestParams, result, mute } = props;
   // console.log(requestParams);
   // making such a retarded markup to avoid es-lint errors
   return (
-    <div className="text-muted">
+    <article className={mute ? 'text-muted' : ''}>
       {/* <strong>Your search: </strong> */}
       <strong>Rating: </strong>
       <span>from </span>
-      <strong>{requestParams['vote_average.gte']}</strong>
+      <strong>{+(requestParams['vote_average.gte']).toFixed(2)}</strong>
       <span> to </span>
-      <strong>{requestParams['vote_average.lte']}</strong>
+      <strong>{+(requestParams['vote_average.lte']).toFixed(2)}</strong>
       <span>; </span>
       <strong>Vote count: </strong>
       <span>from </span>
-      <strong>{requestParams['vote_average.gte']}</strong>
+      <strong>{requestParams['vote_count.gte']}</strong>
       <span> to </span>
-      <strong>{requestParams['vote_average.gte']}</strong>
+      <strong>{requestParams['vote_count.lte']}</strong>
       <span>; </span>
       {requestParams.include_adult && (<strong className="text-danger">Adult included; </strong>)}
       {requestParams.include_video && (<strong>Videos included; </strong>)}
@@ -57,13 +57,28 @@ function ShowParams(props) {
           <strong>Only first 1000 pages are available due to server-side API limitations.</strong>
         </div>
       )}
-    </div>
+    </article>
   );
 }
 
 ShowParams.propTypes = {
   requestParams: PropTypes.instanceOf(Object).isRequired,
-  result: PropTypes.instanceOf(Object).isRequired,
+  result: PropTypes.shape({
+    page: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    total_pages: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    total_results: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]).isRequired,
+    results: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }).isRequired,
+  mute: PropTypes.bool.isRequired,
 };
 
 export default ShowParams;

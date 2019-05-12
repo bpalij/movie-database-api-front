@@ -96,7 +96,7 @@ class Paginator extends Component {
         <div id="paginator">
           <button
             type="button"
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-dark"
             disabled={this.disableFirst()}
             onClick={() => {
               this.goToPage(1);
@@ -107,7 +107,7 @@ class Paginator extends Component {
           </button>
           <button
             type="button"
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-dark"
             disabled={this.disableFirst()}
             onClick={() => {
               this.goToPage(Math.min(Math.max((paginator.currentPage - 1), 1),
@@ -123,7 +123,7 @@ class Paginator extends Component {
           </span>
           <button
             type="button"
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-dark"
             disabled={this.disableLast()}
             onClick={() => {
               this.goToPage((Math.max(Math.min((paginator.currentPage + 1),
@@ -135,7 +135,7 @@ class Paginator extends Component {
           </button>
           <button
             type="button"
-            className="btn btn-outline-secondary"
+            className="btn btn-outline-dark"
             disabled={this.disableLast()}
             onClick={() => {
               this.goToPage((Math.min(paginator.maxPage, 1000) || 1));

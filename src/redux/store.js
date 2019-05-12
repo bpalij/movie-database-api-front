@@ -14,6 +14,7 @@ const defaultShowHide = {
   showParams: false,
   loadResult: false,
   showResult: false,
+  muteResult: false,
   errorResult: false,
   showPagination: false,
   // disablePagination: true,
@@ -45,6 +46,7 @@ function showHide(state = defaultShowHide, action) {
       newState.disableForm = false;
       newState.specifySearch = false;
       newState.showParams = true;
+      newState.muteResult = false;
       newState.loadResult = false;
       newState.showResult = true;
       newState.showPagination = true;
@@ -62,10 +64,11 @@ function showHide(state = defaultShowHide, action) {
       return newState;
     case LOAD_NEW_PAGE_START:
       newState.disableForm = true;
-      newState.showParams = true;
-      newState.showResult = false;
+      // newState.showParams = false;
+      newState.showResult = true;
       newState.loadResult = true;
       newState.specifySearch = false;
+      newState.muteResult = true;
       newState.showPagination = true;
       // newState.disablePagination = true;
       return newState;
@@ -74,12 +77,14 @@ function showHide(state = defaultShowHide, action) {
       newState.showParams = true;
       newState.showResult = true;
       newState.loadResult = false;
+      newState.muteResult = false;
       newState.specifySearch = false;
       newState.showPagination = true;
       // newState.disablePagination = false;
       return newState;
     case LOAD_NEW_PAGE_ERROR:
       newState.showForm = true;
+      newState.showParams = false;
       newState.disableForm = false;
       newState.showResult = false;
       newState.loadResult = false;

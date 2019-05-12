@@ -1,0 +1,13 @@
+.item {
+  border: 1px solid black;
+  margin: 10px 0;
+}
+.poster {
+  width: 100%;
+}
+.em2 {
+  font-size: 2em;
+}
+.em1-5 {
+  font-size: 1.5em;
+}

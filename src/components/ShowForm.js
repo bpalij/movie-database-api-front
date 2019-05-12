@@ -182,7 +182,7 @@ class ShowForm extends Component {
             </div>
             <div className="col-12 col-sm-6 col-md-4">
               <label htmlFor="adult-button">
-                <div>Adult:</div>
+                <div className="text-danger">Adult:</div>
                 {/*
                   would like use button instead of input
                   button is better for code semantics and understanding
@@ -192,7 +192,7 @@ class ShowForm extends Component {
                 <input
                   id="adult-button"
                   type="button"
-                  className={adult ? 'btn btn-success btn-full-width' : 'btn btn-secondary btn-full-width'}
+                  className={adult ? 'btn btn-success btn-full-width' : 'btn btn-outline-dark btn-full-width'}
                   value={adult ? 'Include' : 'Do not include'}
                   onClick={this.handleSwitch('adult')}
                 />
@@ -210,7 +210,7 @@ class ShowForm extends Component {
                 <input
                   id="video-button"
                   type="button"
-                  className={video ? 'btn btn-success btn-full-width' : 'btn btn-secondary btn-full-width'}
+                  className={video ? 'btn btn-success btn-full-width' : 'btn btn-outline-dark btn-full-width'}
                   value={video ? 'Include' : 'Do not include'}
                   onClick={this.handleSwitch('video')}
                 />
