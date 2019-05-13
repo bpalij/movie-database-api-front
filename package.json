@@ -1,6 +1,7 @@
 {
   "name": "movie-database-api-front",
   "version": "0.1.0",
+  "homepage": "http://bpalij.github.io/movie-database-api-front",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -17,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-config-airbnb": "^17.1.0"
+    "eslint-config-airbnb": "^17.1.0",
+    "gh-pages": "^2.0.1"
   }
 }
